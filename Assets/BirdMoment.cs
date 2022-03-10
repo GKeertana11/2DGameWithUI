@@ -11,8 +11,9 @@ public class BirdMoment : MonoBehaviour
    public  int maxAngle, minAngle, angle;
     public float score;
     public Text scoreText;
-   // bool isTrue = false;
+   bool isTrue = false;
     public Text gameOver;
+    public GameObject player;
     // Start is called before the first frame update\
 
     private void Awake()
@@ -36,11 +37,15 @@ public class BirdMoment : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (isTrue == false)
         {
-            BirdFlagJump();
+            if (Input.GetMouseButtonDown(0))
+            {
+                BirdFlagJump();
+            }
+
+            BirdRotation();
         }
-        BirdRotation();
     }
 
     private void BirdRotation()
@@ -84,6 +89,8 @@ public class BirdMoment : MonoBehaviour
             Debug.Log("gameover");
 
             gameOver.GetComponent<Text>().enabled = true;
+            isTrue = true;
+            player.GetComponent<Animator>().enabled = false;
 
            
         }
