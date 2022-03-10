@@ -9,10 +9,14 @@ public class PipeSpawner : MonoBehaviour
     public float yMin;
     public float yMax;
     public float time;
+    BirdMoment birdMoment;
     void Start()
     {
-
-        InvokeRepeating("Spawner", 2f, 2f);
+        birdMoment = GameObject.Find("Player").GetComponent<BirdMoment>();
+        
+        
+            InvokeRepeating("Spawner", 2f, 2f);
+        
 
 
     }
@@ -24,10 +28,12 @@ public class PipeSpawner : MonoBehaviour
     
    private void Spawner()
     {
+        if (birdMoment.isTrue == false)
+        {
             GameObject newPipe = Instantiate(pipePrefab);
 
-                newPipe.transform.position = new Vector2(transform.position.x, UnityEngine.Random.Range(yMin, yMax));
-            
+            newPipe.transform.position = new Vector2(transform.position.x, UnityEngine.Random.Range(yMin, yMax));
 
+        }
      }
 }
