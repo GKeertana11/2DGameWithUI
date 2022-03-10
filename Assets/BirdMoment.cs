@@ -11,7 +11,7 @@ public class BirdMoment : MonoBehaviour
    public  int maxAngle, minAngle, angle;
     public float score;
     public Text scoreText;
-   bool isTrue = false;
+  public bool isTrue = false;
     public Text gameOver;
     public GameObject player;
     // Start is called before the first frame update\
